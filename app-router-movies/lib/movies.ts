@@ -1,3 +1,8 @@
+export type Genre = {
+    id: number;
+    name: string;
+}
+
 export const getMoviesGenres = async () => {
     const options = {
         method: 'GET',
@@ -9,7 +14,7 @@ export const getMoviesGenres = async () => {
       
       const response = await fetch('https://api.themoviedb.org/3/genre/movie/list?language=en', options)
       const { genres } = await response.json()
-      return genres;
+      return genres as Genre[];
 }
 
     /*

@@ -1,15 +1,15 @@
 import SideBar from "@/components/SideBar";
-import React from "react";
+import { getMoviesGenres } from "@/lib/movies";
 
 export type LayoutProps = {
   children: React.ReactNode;
 };
-export default function Layout({ children }: LayoutProps) {
+export default async function Layout({ children }: LayoutProps) {
+  const genres = await getMoviesGenres();
   return (
-    <div className="flex flex-row debug">
-      <SideBar className="debug" options={["a", "b", "c"]} />
+    <div className="flex flex-row items-stretch">
+      <SideBar genres={genres} />
       <div>{children}</div>
     </div>
   );
 }
-
