@@ -1,8 +1,14 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
+import { Button } from "./ui/button";
+import { link } from "fs";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
+  const router = useRouter();
   return (
     <header
       className={cn(
@@ -15,6 +21,13 @@ export default function Header() {
           movies
         </div>
       </Link>
+      <Button
+        variant="link"
+        className="text-white"
+        onClick={() => router.push("/genres")}
+      >
+        genres
+      </Button>
     </header>
   );
 }
