@@ -27,3 +27,4 @@ export default function SideBar({ className, genres }: SideBarProps) {
     </div>
   );
 }
+
