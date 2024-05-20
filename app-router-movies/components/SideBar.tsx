@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils';
 import React from 'react'
 
 type SideBarProps = {
-    className: string;
+    className?: string;
     options: string[];
 }
 export default function SideBar({className, options}: SideBarProps) {
