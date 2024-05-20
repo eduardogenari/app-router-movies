@@ -1,3 +1,5 @@
+import { get } from "http";
+
 export type Genre = {
   id: number;
   name: string;
@@ -21,7 +23,7 @@ export const getMoviesGenres = async () => {
   return genres as Genre[];
 };
 
-type Movie = {
+export type Movie = {
   id: number;
   title: string;
   release_date: Date;
@@ -39,19 +41,6 @@ export const getMoviesWithGenres = async (genreIds: number[]) => {
   return movies as Movie[];
 };
 
-/*
-
-        const options = {
-        method: 'GET',
-        headers: {
-          accept: 'application/json',
-          Authorization: 'Bearer xxxxxx'
-        }
-      };
-      
-      fetch('https://api.themoviedb.org/3/genre/movie/list?language=en', options)
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
-    
-        */
+export const getAllMovies = async () => {
+  return getMoviesWithGenres([]);
+}

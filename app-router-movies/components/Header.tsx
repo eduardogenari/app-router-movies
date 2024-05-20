@@ -2,9 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import React from "react";
-import { Button } from "./ui/button";
-import { link } from "fs";
+import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 
 export default function Header() {
@@ -18,7 +16,7 @@ export default function Header() {
     >
       <Link href="/">
         <div id="logo" className="font-extrabold text-xl text-white mr-4">
-          movies
+          Movies!
         </div>
       </Link>
       <Button
@@ -26,7 +24,7 @@ export default function Header() {
         className="text-white"
         onClick={() => router.push("/genres")}
       >
-        genres
+        Genres
       </Button>
     </header>
   );

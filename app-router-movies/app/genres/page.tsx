@@ -1,9 +1,5 @@
-import React from 'react'
+import { redirect } from 'next/navigation'
 
 export default function Page() {
-  return (
-    <main>
-        <h1>genres page</h1>
-    </main>
-  )
+  redirect('/genres/all')
 }

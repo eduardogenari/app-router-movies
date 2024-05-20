@@ -1,4 +1,4 @@
-import { getMoviesWithGenres } from "@/lib/movies";
+import { Movie, getAllMovies, getMoviesWithGenres } from "@/lib/movies";
 import { notFound } from "next/navigation";
 
 type PageProps = {
@@ -9,11 +9,19 @@ type PageProps = {
 
 export default async function Page({ params }: PageProps) {
   const { genreId } = params;
-  const genreNum = Number(genreId)
-  if(Number.isNaN(genreNum)) {
-    notFound()
+
+  let movies: Movie[] = [];
+
+  if (genreId === "all") {
+    movies = await getAllMovies();
+  } else {
+    const genreNum = Number(genreId)
+    if(Number.isNaN(genreNum)) {
+      notFound()
+    }
+    movies = await getMoviesWithGenres([genreNum]);
   }
-  const movies = await getMoviesWithGenres([genreNum]);
+
   return (
     <main>
       {movies.map((movie) => (
