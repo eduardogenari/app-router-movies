@@ -3,7 +3,22 @@ export const getMoviesGenres = async () => {
         method: 'GET',
         headers: {
           accept: 'application/json',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NDZmYWU5MjhlN2E1MTc5YzU5NWI0ODcxNDRiZmRlNCIsInN1YiI6IjYzZTM2ZTBhMjJlNDgwMDBhNzkzMGFkZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UD3nfwAvVjS6YevwxrwBKJLcgrvxEtOgj2zngCQvyKA'
+          Authorization: `Bearer ${process.env.TMDB_TOKEN}`
+        }
+      };
+      
+      const response = await fetch('https://api.themoviedb.org/3/genre/movie/list?language=en', options)
+      const { genres } = await response.json()
+      return genres;
+}
+
+    /*
+
+        const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: 'Bearer xxxxxx'
         }
       };
       
@@ -11,4 +26,5 @@ export const getMoviesGenres = async () => {
         .then(response => response.json())
         .then(response => console.log(response))
         .catch(err => console.error(err));
-}
+    
+        */
